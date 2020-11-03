@@ -6,7 +6,14 @@ namespace TextReader
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool noFile = true;
+            string fileName;
+            while ( noFile )
+            {
+                fileName = Console.ReadLine(); 
+                // if isValidFileName( fileName ) 
+                //      noFile = false;
+            }
         }
     }
 }
