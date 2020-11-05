@@ -4,16 +4,29 @@ namespace TextReader
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             bool noFile = true;
-            string fileName;
+            string filePath = "";
+            Statistics statistics = new Statistics();
             while ( noFile )
             {
-                fileName = Console.ReadLine(); 
-                // if isValidFileName( fileName ) 
-                //      noFile = false;
+                filePath = Console.ReadLine(); 
+                if ( System.IO.File.Exists( filePath ) && System.IO.Path.GetExtension( filePath ) == "txt" )
+                {
+                    noFile = false;
+                }
             }
+            try
+            {
+                statistics.Load(filePath);
+            }
+            catch (System.IO.IOException exception)
+            {
+                Console.WriteLine(exception.Message);
+                return -1;
+            }
+            return 0;
         }
     }
 }
